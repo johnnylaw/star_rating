@@ -10,9 +10,8 @@ module StarRating
         end
         declare :encode64, args: [:string]
 
-        def star_values
-          literals = StarRating::Engine.config.star_values.map{ |value| ::Sass::Script::Number.new(value) }
-          ::Sass::Script::List.new literals, :comma
+        def number_of_stars
+          ::Sass::Script::Number.new(StarRating::Engine.config.number_of_stars)
         end
       end
     end

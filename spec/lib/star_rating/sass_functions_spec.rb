@@ -9,19 +9,18 @@ describe StarRating::SassFunctions do
     end
   end
 
-  describe '.star_values' do
-    it 'spits out the StarRating::Engine.config.star_values in a SASS array' do
-      StarRating::Engine.config.stub(:star_values).and_return([1, 2, 3])
-      input = '$values: star_values();
-        @each $value in $values {
-          .star-#{$value} {
-            margin: $value * 1px;
+  describe '.number_of_stars' do
+    it 'spits out the StarRating::Engine.config.number_of_stars in a SASS number' do
+      StarRating::Engine.config.stub(:number_of_stars).and_return(3)
+      input = '@for $i from 1 through number_of_stars() {
+          .star-rating-#{$i} {
+            margin: $i * 1px;
           }
         }'
       output = Sass::Engine.new(input, :syntax => :scss, :style => :compact).render
-      expect(output).to match '.star-1 { margin: 1px; }'
-      expect(output).to match '.star-2 { margin: 2px; }'
-      expect(output).to match '.star-3 { margin: 3px; }'
+      expect(output).to match '.star-rating-1 { margin: 1px; }'
+      expect(output).to match '.star-rating-2 { margin: 2px; }'
+      expect(output).to match '.star-rating-3 { margin: 3px; }'
     end
   end
 end
