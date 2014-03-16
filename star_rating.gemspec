@@ -21,4 +21,6 @@ Gem::Specification.new do |s|
   s.add_dependency "sass-rails", "~> 4.0.0"
 
   s.add_development_dependency "sqlite3"
+  s.add_development_dependency 'rspec-rails'
+  s.add_development_dependency 'nokogiri'
 end
