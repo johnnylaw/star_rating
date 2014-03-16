@@ -1,7 +1,7 @@
 module StarRating
   module FormHelperExt
-    def star_rating_field(object_name, method, values: nil, size: nil, html: {})
-      values ||= StarRating::Engine.config.star_values
+    def star_rating_field(object_name, method, size: nil, html: {})
+      values ||= (1..StarRating::Engine.config.number_of_stars).map{ |i| i * StarRating::Engine.config.scale }
       css_class = ['star-rating', html.delete(:class)].compact.join(' ')
       html.merge!(class: css_class)
       if size

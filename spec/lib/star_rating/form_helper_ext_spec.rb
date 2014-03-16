@@ -3,7 +3,7 @@ require 'spec_helper'
 describe StarRating::FormHelperExt do
   describe '#star_rating_field' do
     subject { ActionView::Base.new.star_rating_field(*args) }
-    let(:expected_star_values) { StarRating::DEFAULT_STAR_VALUES }
+    let(:expected_star_values) { [1, 2, 3, 4, 5] }
 
     def assert_stuff
       # One span with an 'input' and an adjacent 'i' tag for each star value
@@ -18,7 +18,7 @@ describe StarRating::FormHelperExt do
       end
 
       inputs_and_i_tags = span.children
-      expect(inputs_and_i_tags.count).to eq 10
+      expect(inputs_and_i_tags.count).to eq (2 * expected_star_values.count)
       inputs_and_i_tags.each_slice(2).each_with_index do |els, ind|
         exp_val = expected_star_values[ind]
         input = els.first
@@ -38,17 +38,19 @@ describe StarRating::FormHelperExt do
       it { assert_stuff }
 
       context 'when star values have been otherwise configured' do
-        let(:expected_star_values) { [1, 2, 3, 5, 8] }
+        let(:expected_star_values) { [10, 20, 30] }
 
         before do
           StarRating.configure do |config|
-            config.star_values = [1, 2, 3, 5, 8]
+            config.number_of_stars = 3
+            config.scale = 10
           end
         end
 
         after do
           StarRating.configure do |config|
-            config.star_values = StarRating::DEFAULT_STAR_VALUES
+            config.number_of_stars = StarRating::DEFAULT_NUMBER_OF_STARS
+            config.scale = StarRating::DEFAULT_SCALE
           end
         end
 
