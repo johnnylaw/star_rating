@@ -4,12 +4,15 @@ describe StarRating::FormHelperExt do
   describe '#star_rating_field' do
     subject { ActionView::Base.new.star_rating_field(*args) }
     let(:expected_star_values) { [1, 2, 3, 4, 5] }
+    let(:expected_span_attributes) { { class: 'star-rating' } }
+    let(:expected_checked) { nil }
 
     def assert_stuff
-      # One span with an 'input' and an adjacent 'i' tag for each star value
+      # Exactly one element
       elements = Nokogiri::HTML::Document.parse(subject).css('body').children
       expect(elements.count).to eq 1
 
+      # ...which should be a span with the correct attributes
       span = elements.first
       expect(span.name).to eq 'span'
       expect(span.attributes.count).to eq expected_span_attributes.count
@@ -17,6 +20,8 @@ describe StarRating::FormHelperExt do
         expect(span.attributes[key.to_s].value).to eq value
       end
 
+      # ...and should contain N tuples consisting each of an 'input' and adjacent 'i' tag,
+      #    where N is the number of stars
       inputs_and_i_tags = span.children
       expect(inputs_and_i_tags.count).to eq (2 * expected_star_values.count)
       inputs_and_i_tags.each_slice(2).each_with_index do |els, ind|
@@ -24,9 +29,10 @@ describe StarRating::FormHelperExt do
         input = els.first
         input.name.should eq 'input'
         input.attributes['value'].value.should eq exp_val.to_s
-        input.attributes['class'].value.should eq "star-rating-#{exp_val}"
+        input.attributes['class'].value.should eq "star-rating-#{ind + 1}"
         input.attributes['name'].value.should eq 'opinion[rating]'
         input.attributes['type'].value.should eq 'radio'
+        expect(input.attributes.keys.include?('checked')).to eq (ind + 1 == expected_checked)
         els.last.name.should eq 'i'
       end
     end
@@ -78,6 +84,13 @@ describe StarRating::FormHelperExt do
 
         it { assert_stuff }
       end
+    end
+
+    context 'when value option is present' do
+      let(:args) { [:opinion, :rating, { value: 3 }] }
+      let(:expected_checked) { 3 }
+
+      it { assert_stuff }
     end
 
     context 'when other options are present' do
