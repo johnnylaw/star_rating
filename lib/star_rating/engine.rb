@@ -1,9 +1,11 @@
 module StarRating
-  DEFAULT_STAR_VALUES = [1, 2, 3, 4, 5]
+  DEFAULT_NUMBER_OF_STARS = 5
+  DEFAULT_SCALE = 1
 
   class Engine < ::Rails::Engine
     isolate_namespace StarRating
-    config.star_values = DEFAULT_STAR_VALUES
+    config.number_of_stars = DEFAULT_NUMBER_OF_STARS
+    config.scale = DEFAULT_SCALE
   end
 
   def self.configure(&block)
