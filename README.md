@@ -1,6 +1,7 @@
 # star_rating gem
 [![Build Status](https://travis-ci.org/johnnylaw/star_rating.png?branch=master)](https://travis-ci.org/johnnylaw/star_rating)
 [![Code Climate](https://codeclimate.com/github/johnnylaw/star_rating.png)](https://codeclimate.com/github/johnnylaw/star_rating)
+[![Gem Version](https://badge.fury.io/rb/star_rating.png)](http://badge.fury.io/rb/star_rating)
 
 The star_rating gem allows for the easy integration of a star rating widget into a Rails app running Ruby 2.0 or higher.  The star rating form input as well as the star rating display helper rely entirely on Sass (no JavaScript) to create a **highly** configurable arrangement of any number of stars of any size and appearance.  The default number of stars is of course five.
 
