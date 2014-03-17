@@ -12,7 +12,7 @@ $star-point-9: $stroke-offset + ',' + (7.639 + $stroke-offset);
 $star-point-10: (6.91 + $stroke-offset) + ',' + (6.583 + $stroke-offset);
 $star-points: "#{$star-point-1} #{$star-point-2} #{$star-point-3} #{$star-point-4} #{$star-point-5} #{$star-point-6} #{$star-point-7} #{$star-point-8} #{$star-point-9} #{$star-point-10}";
 
-$star-rating-canvas-size: 20 + $stroke-offset + $star-rating-spacing;
+$star-rating-canvas-size: 20 + $star-rating-outline-width + $star-rating-spacing;
 
 $star-canvas: '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="#{$star-rating-canvas-size}px" height="#{$star-rating-canvas-size}px" viewBox="0 0 #{$star-rating-canvas-size} #{$star-rating-canvas-size}" enable-background="new 0 0 #{$star-rating-canvas-size} #{$star-rating-canvas-size}" xml:space="preserve">';
 
