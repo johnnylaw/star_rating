@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'genspec'
 
 describe 'star_rating:install' do
-  it do
+  it 'creates a star_rating_settings.css.scss file and puts commented-out defaults in it' do
     subject.should generate("app/assets/stylesheets/star_rating_settings.css.scss") { |content|
       lines = content.split("\n")
       lines.first.should =~ /^@import 'star_rating\/defaults';$/
