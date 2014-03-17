@@ -1,6 +1,9 @@
 # star_rating gem
 
-The star_rating gem allows for the easy integration of a star rating widget into a Rails app.  The star rating form input as well as the star rating display helper rely entirely on Sass (no JavaScript) to create a **highly** configurable arrangement of any number of stars of any size and appearance.  The default of course is five.
+[![Build Status](https://travis-ci.org/johnnylaw/star_rating.png?branch=master)](https://travis-ci.org/johnnylaw/star_rating)
+[![Code Climate](https://codeclimate.com/github/johnnylaw/star_rating.png)](https://codeclimate.com/github/johnnylaw/star_rating)
+
+The star_rating gem allows for the easy integration of a star rating widget into a Rails app running Ruby 2.0 or higher.  The star rating form input as well as the star rating display helper rely entirely on Sass (no JavaScript) to create a **highly** configurable arrangement of any number of stars of any size and appearance.  The default number of stars is of course five.
 
 ### Installing star_rating
 
@@ -72,7 +75,7 @@ By default there are five stars with values [1, 2, 3, 4, 5], and both the form h
       config.scale = 2
     end
 
-which would produce 6 stars with values [2, 4, 6, 8, 10, 12].  Additionally the appearance of the stars is highly configurable, utilizing SVG graphics, allowing for changes to spacing, color, gradient (for the "full" stars), and you can even replace the url of the images altogether in the SCSS override file installed by the generator and get something entirely different, such as hearts or baby faces or baboon butts.
+which would produce 6 stars with values [2, 4, 6, 8, 10, 12].  Additionally the appearance of the stars is highly configurable, utilizing SVG graphics, allowing for changes to spacing, color, outline, gradient (for the "full" stars), and you can even replace the url of the images altogether in the SCSS override file installed by the generator and get something entirely different, such as hearts or babies' faces or baboons' butts.
 
 See the SASS file created by the generator for explicit details about how to configure the different appearance options.
 
