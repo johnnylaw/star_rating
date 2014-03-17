@@ -1,0 +1,51 @@
+// Here is where you can override the settings and color information for your stars
+// Default values are shown
+
+//****************************     SIZE    *******************************//
+$default-star-rating-height: 30px;
+$star-rating-spacing: 0;
+
+
+//********************     EMPTY STAR DESCRIPTION     ********************//
+$star-rating-color-empty: rgba(128, 128, 128, .3);
+$star-rating-outline-color-empty: #888888;
+
+
+//****************     OUTLINE WIDTH (for both stars)     ****************//
+$star-rating-outline-width: 1;
+
+
+//**********     FULL(selected or checked) STAR DESCRIPTION     **********//
+// Change these for left-to-right gradient
+$star-rating-fill-start-x: 0%;
+$star-rating-fill-finish-x: 0%;
+
+// Change these for top-to-bottom gradient
+$star-rating-fill-start-y: 10%;
+$star-rating-fill-finish-y: 90%;
+
+// Define start and finish color for gradient for
+//   For solid color, define $star-rating-fill-color-finish below
+//   and set all start and finish values above to 0%
+//   NOTE: rgba colors can be used if transparency is desired.
+$star-rating-fill-color-start: #ffdf88;
+$star-rating-fill-color-finish: #ff9870;
+
+// Being set to 'none' (default) results in no outline on full star
+$star-rating-outline-color-full: none;
+
+
+//********************     OVERRIDE URL of IMAGES     ********************//
+// Override the URLs with any image desired, either with a path or
+//   inline image or SVG.  Overriding these will cause all other
+//   settings to be meaningless, with the exception of
+//   $default-star-rating-height
+
+//   NOTE: Be sure to override both!
+//   E.g. these heart icons, which are packaged in vendor/assets and
+//   you are of course welcome to use:
+//     $star-rating-url-empty: '/assets/star_rating/heart-icon-empty.png';
+//     $star-rating-url-full: '/assets/star_rating/heart-icon-full.png';
+
+//   NOTE: The canvas size of the image (be it png or SVG or other)
+//   must be perfectly square in order to display properly

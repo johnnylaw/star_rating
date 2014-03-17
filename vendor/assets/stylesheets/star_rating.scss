@@ -1,0 +1,95 @@
+$stroke-offset: $star-rating-outline-width/2;
+
+$star-point-1: (10 + $stroke-offset) + ',' + ($stroke-offset);
+$star-point-2: (13.09 + $stroke-offset) + ',' + (6.583 + $stroke-offset);
+$star-point-3: (20 + $stroke-offset) + ',' + (7.639 + $stroke-offset);
+$star-point-4: (15 + $stroke-offset) + ',' + (12.764 + $stroke-offset);
+$star-point-5: (16.18 + $stroke-offset) + ',' + (20 + $stroke-offset);
+$star-point-6: (10 + $stroke-offset) + ',' + (16.583 + $stroke-offset);
+$star-point-7: (3.82 + $stroke-offset) + ',' + (20 + $stroke-offset);
+$star-point-8: (5 + $stroke-offset) + ',' + (12.764 + $stroke-offset);
+$star-point-9: $stroke-offset + ',' + (7.639 + $stroke-offset);
+$star-point-10: (6.91 + $stroke-offset) + ',' + (6.583 + $stroke-offset);
+$star-points: "#{$star-point-1} #{$star-point-2} #{$star-point-3} #{$star-point-4} #{$star-point-5} #{$star-point-6} #{$star-point-7} #{$star-point-8} #{$star-point-9} #{$star-point-10}";
+
+$star-rating-canvas-size: 20 + $stroke-offset + $star-rating-spacing;
+
+$star-canvas: '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="#{$star-rating-canvas-size}px" height="#{$star-rating-canvas-size}px" viewBox="0 0 #{$star-rating-canvas-size} #{$star-rating-canvas-size}" enable-background="new 0 0 #{$star-rating-canvas-size} #{$star-rating-canvas-size}" xml:space="preserve">';
+
+$star-rating-default-url-empty: 'data:image/svg+xml;base64,' + encode64('#{$star-canvas}<polygon fill="#{$star-rating-color-empty}" stroke="#{$star-rating-outline-color-empty}" stroke-width="#{$star-rating-outline-width}" stroke-linejoin="miter" points="#{$star-points}"/></svg>');
+
+$star-rating-gradient-full: '<defs><linearGradient id="grad1" x1="#{$star-rating-fill-start-x}" y1="#{$star-rating-fill-start-y}" x2="#{$star-rating-fill-finish-x}" y2="#{$star-rating-fill-finish-y}"><stop offset="0%" style="stop-color:#{$star-rating-fill-color-start};stop-opacity:1" /><stop offset="100%" style="stop-color:#{$star-rating-fill-color-finish};stop-opacity:1" /></linearGradient></defs>';
+
+$star-rating-default-url-full: 'data:image/svg+xml;base64,' + encode64($star-canvas + $star-rating-gradient-full +
+'<polygon fill="url(#grad1)" stroke-width="#{$star-rating-outline-width}" stroke="#{$star-rating-outline-color-full}" points="' + $star-points + '"/></svg>');
+
+.star-rating {
+  margin: 0;
+  font-size: 0;
+  white-space: nowrap;
+  display: inline-block;
+  width: $default-star-rating-height * number_of_stars();
+  height: $default-star-rating-height;
+  overflow: hidden;
+  position: relative;
+  @if $star-rating-url-empty {
+    background: url($star-rating-url-empty);
+  } @else {
+    background: url($star-rating-default-url-empty);
+  }
+  background-size: auto 100%;
+
+  span, i {
+    height: 100%;
+    @if $star-rating-url-full {
+      background: url($star-rating-url-full);
+    } @else {
+      background: url($star-rating-default-url-full);
+    }
+    background-size: auto 100%;
+  }
+
+  span {
+    display: block;
+  }
+
+  i {
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%/number_of_stars();
+    z-index: 1;
+  }
+
+  input{
+    opacity: 0;
+    display: inline-block;
+    width: 100%/number_of_stars();
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    z-index: 2;
+    position: relative;
+
+    &:hover + i {
+      opacity: 1;
+    }
+
+    @for $i from 2 through number_of_stars() {
+      &.star-rating-#{$i}:hover + i {
+        width: 100% * $i/number_of_stars();
+      }
+    }
+
+    &:checked + i {
+      opacity: 1;
+    }
+
+    @for $i from 2 through number_of_stars() {
+      &.star-rating-#{$i}:checked + i {
+        width: 100% * $i/number_of_stars();
+      }
+    }
+  }
+}
