@@ -55,7 +55,7 @@ This is for rendering already existing ratings or possibly an average rating for
 
     star_rating(value = 0, size: nil, rating_html: {}, container_html: {})
 
-- ````value```` is the value of the rating to be rendered, e.g. 3.3 as shown above
+- ````value```` is the value of the rating to be rendered, e.g. 3.3 (out of 5 for example)
 - The ````size```` option is as with the form helper.
 - The ````rating_html```` and the ````container_html```` options are for adding HTML attributes to either of the two containers that make up the output, which essentially looks like (in the example of a value of 3.3 on a 5-point scale):
 
@@ -75,7 +75,7 @@ By default there are five stars with values [1, 2, 3, 4, 5], and both the form h
       config.scale = 2
     end
 
-which would produce 6 stars with values [2, 4, 6, 8, 10, 12].  Additionally the appearance of the stars is highly configurable, utilizing SVG graphics, allowing for changes to spacing, color, outline, gradient (for the "full" stars), and you can even replace the url of the images altogether in the SCSS override file installed by the generator and get something entirely different, such as hearts or babies' faces or baboons' butts.
+which would produce 6 stars with values [2, 4, 6, 8, 10, 12].  Additionally the appearance of the stars is highly configurable (check out the [the codepen demo](http://codepen.io/johnnylaw/pen/Iivyz/)), utilizing SVG graphics, allowing for changes to spacing, color, outline, gradient (for the "full" stars), and you can even replace the url of the images altogether in the SCSS override file installed by the generator and get something entirely different, such as hearts or babies' faces or baboons' butts.
 
 See the SASS file created by the generator for explicit details about how to configure the different appearance options.
 
