@@ -1,5 +1,4 @@
 # star_rating gem
-
 [![Build Status](https://travis-ci.org/johnnylaw/star_rating.png?branch=master)](https://travis-ci.org/johnnylaw/star_rating)
 [![Code Climate](https://codeclimate.com/github/johnnylaw/star_rating.png)](https://codeclimate.com/github/johnnylaw/star_rating)
 
