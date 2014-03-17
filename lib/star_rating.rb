@@ -1,4 +1,6 @@
 require "star_rating/engine"
+require 'star_rating/generators/install_generator'
+
 require 'sass'
 
 module StarRating
